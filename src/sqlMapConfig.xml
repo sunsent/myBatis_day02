@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="db.properties"></properties>
+    <typeAliases>
+        <package name="com.a_bean"></package>
+    </typeAliases>
+    <!-- 和spring整合后 environments配置将废除    -->
+    <environments default="development">
+        <environment id="development">
+            <!-- 使用jdbc事务管理 -->
+            <transactionManager type="JDBC" />
+            <!-- 数据库连接池 -->
+            <dataSource type="POOLED">
+                <property name="driver" value="${pro.driverClass}" />
+                <property name="url"
+                          value="${pro.jdbcUrl}" />
+                <property name="username" value="${pro.user}" />
+                <property name="password" value="${pro.password}" />
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <!--<mapper resource="com/sqlMap/User.xml"></mapper>-->
+        <!--<mapper resource="com/sqlMap/Order.xml"></mapper>-->
+        <package name="com.mapper"></package>
+    </mappers>
+</configuration>
